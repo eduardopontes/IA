@@ -13,7 +13,7 @@ namespace Rastrigin.Teste
             //Arrange
             double a = 3.78;
             double b = 4.88;
-
+            
             var ob = new Program();
 
             //Act
