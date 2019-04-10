@@ -10,7 +10,7 @@ namespace GA
     public class Program
     {
         public double ras(double x, double y)
-        { 
+        {
             return 20 + Math.Pow(x, 2) + Math.Pow(y, 2) - (10 * (Math.Cos(2 * Math.PI * x) + Math.Cos(2 * Math.PI * y)));
         }
 
