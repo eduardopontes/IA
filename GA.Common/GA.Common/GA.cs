@@ -27,14 +27,15 @@ namespace GA.Common
             this.maxGen = maxGeracoes;
             this.funcFit = funcFit;
         }
-
+        //bora criar esse meu povo
         public void criaPop()
         {
             foreach (var cromo in Populacao)
             {
-
+                
             }
         }
+
 
        
     }
