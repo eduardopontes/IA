@@ -7,17 +7,24 @@ using System.Threading.Tasks;
 
 namespace GA
 {
-    public class Program
+    public class RunRastrigin
     {
         public double ras(double x, double y)
         {
             return 20 + Math.Pow(x, 2) + Math.Pow(y, 2) - (10 * (Math.Cos(2 * Math.PI * x) + Math.Cos(2 * Math.PI * y)));
         }
 
-
+        public static string geraStringNumBinAleatorio()
+        {
+            var rand = new Random();
+            return rand.Next(0, 2).ToString() + Convert.ToString(rand.Next(0, 501), 2);
+        }
         static void Main(string[] args)
         {
             var rand = new Random();
+            string formaGene;
+            formaGene = geraStringNumBinAleatorio() + geraStringNumBinAleatorio();
+           
             Console.WriteLine("aleatorio " + rand.Next(0, 2));
             string teste;
             teste = "abcde";
