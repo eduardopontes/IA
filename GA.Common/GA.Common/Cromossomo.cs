@@ -8,10 +8,19 @@ namespace GA.Common
 {
     public class Cromossomo
     {
-        //public double Fitness {
-        //    get { return 20 + Math.Pow(x, 2) + Math.Pow(y, 2) - (10 * (Math.Cos(2 * Math.PI * x) + Math.Cos(2 * Math.PI * y))); }
-        //    set { }
-        //}
+        
+        public double Fitness
+        {
+            get//não testado
+            {
+                double[] genesDecodificados = this.decodificaGenes();
+                double x = genesDecodificados[0];
+                double y = genesDecodificados[1];
+
+                return 20 + Math.Pow(x, 2) + Math.Pow(y, 2) - (10 * (Math.Cos(2 * Math.PI * x) + Math.Cos(2 * Math.PI * y)));
+            }
+            set { }
+        }
 
         public string Genes { get; set; }
 
@@ -23,6 +32,10 @@ namespace GA.Common
             return rand.Next(0, 2).ToString() + Convert.ToString(rand.Next(0, 501), 2);
         }
 
+        /// <summary>
+        /// Decodifica os genes para forma decimal. Retorna array de doubles com os genes x e y
+        /// </summary>
+        /// <returns>Array de doubles com os genes x e y</returns>
         public double[] decodificaGenes()
         {
             bool xNegativo, yNegativo;
