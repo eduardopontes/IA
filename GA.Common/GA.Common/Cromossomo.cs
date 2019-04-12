@@ -8,10 +8,18 @@ namespace GA.Common
 {
     public class Cromossomo
     {
-        
+
+        //CHECK
+        public Cromossomo()
+        {
+            this.iniciaGenes(GA.rand);
+        }
+
+
+        //CHECK
         public double Fitness
         {
-            get//não testado
+            get
             {
                 double[] genesDecodificados = this.decodificaGenes();
                 double x = genesDecodificados[0];
@@ -24,14 +32,28 @@ namespace GA.Common
 
         public string Genes { get; set; }
 
-        public string geraStringNumBinAleatorio()
+        //CHECK
+        public string geraNumBinAleatorio(int min, int max, Random rand)
         {
-            //nesse rand.Next(0, 2).ToString() é dado o sinal. Vamos considerar 0 para negativo e 1 para positivo
-            //PRECISA FAZER SEMPRE DAR STRING DO TAMANHO CERTO. PARA 3 DEVERIA RETORNAR 1000000011 E NÃO 111 (PRIMEIRO 1 É SINAL)
-            var rand = new Random();
-            return rand.Next(0, 2).ToString() + Convert.ToString(rand.Next(0, 501), 2);
+            return formataNumBin(rand.Next(0, 2).ToString(), Convert.ToString(rand.Next(min, max), 2));
         }
 
+        //CHECK
+        public string formataNumBin(string sinal, string num)
+        {
+            //nesse rand.Next(0, 2).ToString() é dado o sinal. Vamos considerar 0 para negativo e 1 para positivo
+            string binNumber = sinal + num;
+            if (binNumber.Length < 10)
+            {
+                while(binNumber.Length < 10)
+                {
+                    binNumber = binNumber.Insert(1, "0");
+                }
+            }
+            return binNumber;
+        }
+
+        //CHECK
         /// <summary>
         /// Decodifica os genes para forma decimal. Retorna array de doubles com os genes x e y
         /// </summary>
@@ -48,8 +70,8 @@ namespace GA.Common
 
             for(int i = 9, j = 19; i > 0; i--,j--,valorDaCasa*=2)
             {
-                x += (Genes[i] - '0') * valorDaCasa;
-                y += (Genes[j] -'0') * valorDaCasa;
+                x += (this.Genes[i] - '0') * valorDaCasa;
+                y += (this.Genes[j] -'0') * valorDaCasa;
             }
             if (xNegativo) x *= -1;
             if (yNegativo) y *= -1;
@@ -57,12 +79,14 @@ namespace GA.Common
             return genesDecodificados;
         }
 
+
+        //CHECK
         /// <summary>
         /// Inicia os genes do cromossomo com valores aleatórios
         /// </summary>
-        public void iniciaGenes()
+        public void iniciaGenes(Random rand)
         {
-            this.Genes = geraStringNumBinAleatorio() + geraStringNumBinAleatorio();
+            this.Genes = geraNumBinAleatorio(0, 501, rand) + geraNumBinAleatorio(0, 501, rand);
         }
     }
 }

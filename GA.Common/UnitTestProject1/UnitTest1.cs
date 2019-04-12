@@ -23,7 +23,7 @@ namespace Rastrigin.Teste
             //Assert
             Assert.AreEqual(true, true);
         }
-
+        
         [TestMethod]
         public void TestaDecodificaGenes()
         {
@@ -37,7 +37,42 @@ namespace Rastrigin.Teste
 
             //Assert
             Assert.IsTrue(actual[0] == expected[0] && actual[1] == expected[1]);
+            
+        }
+
+        [TestMethod]
+        public void TestaFormataNumBin()
+        {
+            //Arrange
+            var obj = new Cromossomo();
+            string sin = "0";
+            string n = "11";//-3
+            var expected = "0000000011";
+
+            //Act
+            var actual = obj.formataNumBin(sin, n);
+ 
+
+            //Assert
+            Assert.AreEqual(actual, expected);
 
         }
+
+        [TestMethod]
+        public void TestaGetFit()
+        {
+            //Arrange
+            var obj = new Cromossomo();
+            obj.Genes = "10000000001000000000"; //0 e 0
+            double expected = 0;
+
+            //Act
+            double actual = obj.Fitness;
+
+            //Assert
+            Assert.AreEqual(actual, expected);
+
+        }
+
     }
 }

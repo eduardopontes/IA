@@ -17,26 +17,23 @@ namespace GA.Common
 
         public int maxGen { get; set; }
 
-        Func<double, double, double> funcFit;
-
-        public GA(int popMax, double taxaMut, double taxaCross, int maxGeracoes, Func<double, double, double> funcFit)
+        public GA(int popMax, double taxaMut, double taxaCross, int maxGeracoes)
         {
             this.Populacao = new Cromossomo[popMax];
             this.taxaMut = taxaMut;
             this.taxaCross = taxaCross;
             this.maxGen = maxGeracoes;
-            this.funcFit = funcFit;
         }
-        //bora criar esse meu povo
+
+        public static Random rand = new Random();
+
+        //CHECK
         public void criaPop()
         {
-            foreach (var cromo in Populacao)
+            for (int i = 0; i < Populacao.Length; i++)
             {
-                
+                Populacao[i] = new Cromossomo();
             }
-        }
-
-
-       
+        }                    
     }
 }
