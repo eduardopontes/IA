@@ -30,9 +30,12 @@ namespace GA.Common
         //CHECK
         public void criaPop()
         {
+            double somaFit = 0;//avaliar qual vai ser a logica pra isso, talvez não fique aqui
+
             for (int i = 0; i < Populacao.Length; i++)
             {
                 Populacao[i] = new Cromossomo();
+                somaFit += Populacao[i].Fitness;
             }
         }                    
     }
