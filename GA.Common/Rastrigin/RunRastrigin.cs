@@ -14,11 +14,13 @@ namespace GA
             return 20 + Math.Pow(x, 2) + Math.Pow(y, 2) - (10 * (Math.Cos(2 * Math.PI * x) + Math.Cos(2 * Math.PI * y)));
         }
 
+
         
         static void Main(string[] args)
         {
-            var ob = new GA.Common.GA(100, 0.2, 0.8, 500);
-            ob.criaPop();
+            var ob = new GA.Common.GA(100, 0.2, 0.75, 10000);
+            ob.executaGA();
+            ob.printaMelhorIndividuo();
             Console.ReadLine();
         }
     }

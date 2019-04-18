@@ -20,21 +20,31 @@ namespace GA.Common
             return 20 + Math.Pow(x, 2) + Math.Pow(y, 2) - (10 * (Math.Cos(2 * Math.PI * x) + Math.Cos(2 * Math.PI * y)));
         }
 
-        //CHECK
-        public double Fitness
-        {
-            get //talvez possa ser otimizado com um if e um backing field?
+        public double Fitness { get; private set; }
+
+        private string _Genes;
+        public string Genes {
+            get
             {
+                return _Genes;
+            }
+            set
+            {
+                _Genes = value;
+
                 double[] genesDecodificados = this.decodificaGenes();
                 double x = genesDecodificados[0];
                 double y = genesDecodificados[1];
 
-                return 1/(rast(x, y)+ 1);
+                Fitness = 1 / (rast(x, y) + 1);
             }
-            set { }
         }
 
-        public string Genes { get; set; }
+        public Cromossomo cruza(Cromossomo parceiro)
+        {
+            Cromossomo filho = new Cromossomo { Genes = this.Genes.Substring(0, 5) + parceiro.Genes.Substring(6, 5) + this.Genes.Substring(10, 5) + parceiro.Genes.Substring(15, 5)};
+            return filho;
+        }
 
         //CHECK
         public string geraNumBinAleatorio(int min, int max, Random rand)
@@ -72,7 +82,7 @@ namespace GA.Common
             double y = 0;
             int valorDaCasa = 1;
 
-            for(int i = 9, j = 19; i > 0; i--,j--,valorDaCasa*=2)
+            for(int i = 9, j = 19; i > 0; i--, j--, valorDaCasa *= 2)
             {
                 x += (this.Genes[i] - '0') * valorDaCasa;
                 y += (this.Genes[j] -'0') * valorDaCasa;
@@ -91,6 +101,16 @@ namespace GA.Common
         public void iniciaGenes(Random rand)
         {
             this.Genes = geraNumBinAleatorio(0, 501, rand) + geraNumBinAleatorio(0, 501, rand);
+        }
+
+        public void mutar()
+        {
+            int i = GA.rand.Next(0, 20);
+            char newChar = (Genes[i] == '1') ? '0' : '1';
+
+            char[] temp = Genes.ToCharArray();
+            temp[i] = newChar;
+            Genes = new string(temp);
         }
     }
 }

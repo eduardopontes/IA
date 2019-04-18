@@ -68,6 +68,31 @@ namespace Rastrigin.Teste
 
             //Act
             double actual = obj.Fitness;
+            
+            //Assert
+            Assert.AreEqual(actual, expected);
+
+        }
+
+        [TestMethod]
+        public void TestaRoleta()
+        {
+            //Arrange
+            int popMax = 100;
+            double taxaMut = 0.8;
+            int maxGeracoes = 5;
+            double taxaCross = 0.7;
+
+            double actual = 537;
+            double expected = 537; //só pra rodar
+            
+            var obj = new GA.Common.GA(popMax, taxaMut, taxaCross, maxGeracoes);
+
+            obj.criaPopInicial();
+
+
+            //Act
+            obj.roleta(actual);
 
             //Assert
             Assert.AreEqual(actual, expected);
