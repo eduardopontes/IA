@@ -47,6 +47,8 @@ namespace GA.Common
             }
 
             Console.WriteLine("Melhor cromossomo: " + melhorCromo.Fitness);
+            double[] par = melhorCromo.decodificaGenes();
+            Console.WriteLine("Melhor resposta x: " + par[0] + " y: " + par[1]);
         }
 
         public void executaGA()
@@ -113,7 +115,7 @@ namespace GA.Common
 
         public Cromossomo roleta(double somaTotalFit)
         {
-            double tiro = rand.NextDouble() * somaTotalFit;
+            double tiro = rand.NextDouble();
 
             foreach (var cromo in Populacao)
             {
