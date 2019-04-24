@@ -42,7 +42,7 @@ namespace GA.Common
 
         public Cromossomo cruza(Cromossomo parceiro)
         {
-            Cromossomo filho = new Cromossomo { Genes = this.Genes.Substring(0, 5) + parceiro.Genes.Substring(6, 5) + this.Genes.Substring(10, 5) + parceiro.Genes.Substring(15, 5)};
+            Cromossomo filho = new Cromossomo { Genes = this.Genes.Substring(0, 10) + parceiro.Genes.Substring(10, 10)};
             return filho;
         }
 

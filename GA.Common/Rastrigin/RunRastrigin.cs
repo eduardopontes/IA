@@ -18,9 +18,9 @@ namespace GA
         
         static void Main(string[] args)
         {
-            var ob = new GA.Common.GA(100, 0.2, 0.75, 5000);
+            var ob = new GA.Common.GA(200, 0.1, 0.8, 5000);
             ob.executaGA();
-            ob.printaMelhorIndividuo();
+            ob.printaDados();
             Console.ReadLine();
         }
     }

@@ -38,17 +38,28 @@ namespace GA.Common
 
         public static Random rand = new Random();
 
-        public void printaMelhorIndividuo()
+        public void printaDados()
         {
+            int bestCount = 0;
+            double somafit = 0;
             Cromossomo melhorCromo = Populacao[0];
             foreach (var cromo in Populacao)
             {
+                if (cromo.Fitness == 1)
+                {
+                    bestCount++;
+                }
+                somafit += cromo.Fitness;
                 melhorCromo = (cromo.Fitness > melhorCromo.Fitness) ? cromo : melhorCromo;
             }
 
             Console.WriteLine("Melhor cromossomo: " + melhorCromo.Fitness);
             double[] par = melhorCromo.decodificaGenes();
             Console.WriteLine("Melhor resposta x: " + par[0] + " y: " + par[1]);
+
+            Console.WriteLine("Média da população: " + somafit / Populacao.Length);
+
+            Console.WriteLine("Numero de casos ótimos: " + bestCount);
         }
 
         public void executaGA()
