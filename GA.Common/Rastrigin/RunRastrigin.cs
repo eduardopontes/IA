@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GA.Common;
+using System.Windows.Forms;
 
 namespace GA
 {
@@ -22,8 +23,13 @@ namespace GA
             ob.executaGA();
             ob.printaDados();
 
+            EventArgs e = null;
+            var send = "";
+
+            GraficosEP gh = new GraficosEP();
             
-            
+            gh.GraficosEP_Load(send, e);
+           
 
             Console.ReadLine();
         }

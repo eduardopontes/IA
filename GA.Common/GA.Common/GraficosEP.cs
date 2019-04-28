@@ -17,15 +17,17 @@ namespace GA.Common
             InitializeComponent();
         }
 
-        private void GraficosEP_Load(object sender, EventArgs e)
+        public void GraficosEP_Load(object sender, EventArgs e)
         {
-            
-            
-           
 
-            
+            InitializeComponent();
 
-            FitGen.Series[""].Points.AddXY("","");
+            //chart1.Series[""].Points.AddXY("","");
+        }
+
+        public void BotaoChart_Click(object sender, EventArgs e)
+        {
+            //this.chart1.Series["Fitness"].Points.AddXY("generation","fit");
         }
     }
 }
