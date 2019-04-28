@@ -56,11 +56,6 @@ namespace GA.Common
             string result = "Melhor cromossomo: " + melhorCromo.Fitness + "\nMelhor resposta x: " + par[0] + " y: " + par[1] + "\nMédia da população: " + somafit / Populacao.Length + "\nNumero de casos ótimos: " + bestCount;
 
             return result;
-            //Console.WriteLine("Melhor cromossomo: " + melhorCromo.Fitness);
-            ////double[] par = melhorCromo.decodificaGenes();
-            //Console.WriteLine("Melhor resposta x: " + par[0] + " y: " + par[1]);
-            //Console.WriteLine("Média da população: " + somafit / Populacao.Length);
-            //Console.WriteLine("Numero de casos ótimos: " + bestCount);
         }
 
         public void executaGA()
