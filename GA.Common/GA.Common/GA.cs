@@ -13,7 +13,8 @@ namespace GA.Common
         public double taxaMut { get; set; }
         public double taxaCross { get; set; }
         public int maxGer { get; set; }
-        public bool vaiCruzar {
+        public bool vaiCruzar
+        {
             get
             {
                 return rand.NextDouble() < taxaCross;
@@ -29,15 +30,15 @@ namespace GA.Common
             {
                 popMax += 1;
             }
-                this.Populacao = new Cromossomo[popMax];
-                this.taxaMut = taxaMut;
-                this.taxaCross = taxaCross;
-                this.maxGer = maxGeracoes;
+            this.Populacao = new Cromossomo[popMax];
+            this.taxaMut = taxaMut;
+            this.taxaCross = taxaCross;
+            this.maxGer = maxGeracoes;
         }
 
         public static Random rand = new Random();
 
-        public void printaDados()
+        public string printaDados()
         {
             int bestCount = 0;
             double somafit = 0;
@@ -51,16 +52,17 @@ namespace GA.Common
                 somafit += cromo.Fitness;
                 melhorCromo = (cromo.Fitness > melhorCromo.Fitness) ? cromo : melhorCromo;
             }
-
-            Console.WriteLine("Melhor cromossomo: " + melhorCromo.Fitness);
             double[] par = melhorCromo.decodificaGenes();
-            Console.WriteLine("Melhor resposta x: " + par[0] + " y: " + par[1]);
+            string result = "Melhor cromossomo: " + melhorCromo.Fitness + "\nMelhor resposta x: " + par[0] + " y: " + par[1] + "\nMédia da população: " + somafit / Populacao.Length + "\nNumero de casos ótimos: " + bestCount;
 
-            Console.WriteLine("Média da população: " + somafit / Populacao.Length);
-
-            Console.WriteLine("Numero de casos ótimos: " + bestCount);
+            return result;
+            //Console.WriteLine("Melhor cromossomo: " + melhorCromo.Fitness);
+            ////double[] par = melhorCromo.decodificaGenes();
+            //Console.WriteLine("Melhor resposta x: " + par[0] + " y: " + par[1]);
+            //Console.WriteLine("Média da população: " + somafit / Populacao.Length);
+            //Console.WriteLine("Numero de casos ótimos: " + bestCount);
         }
-        
+
         public void executaGA()
         {
             criaPopInicial();
@@ -114,7 +116,7 @@ namespace GA.Common
         {
             Populacao = crossover();
             avaliaMutacoes();
-            geracao++; 
+            geracao++;
         }
 
         public Cromossomo[] crossover()
@@ -146,7 +148,7 @@ namespace GA.Common
             {
                 parceiroA = roleta(somaFit);
                 parceiroB = roleta(somaFit);
-                
+
                 if (vaiCruzar)
                 {
                     novaPop[i] = parceiroA.cruza(parceiroB);
@@ -168,7 +170,7 @@ namespace GA.Common
 
             foreach (var cromo in Populacao)
             {
-                tiro -= cromo.Fitness/somaTotalFit;
+                tiro -= cromo.Fitness / somaTotalFit;
                 if (tiro < 0) return cromo;
             }
             return Populacao[Populacao.Length - 1];
