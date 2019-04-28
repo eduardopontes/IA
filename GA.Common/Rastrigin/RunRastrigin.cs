@@ -19,12 +19,12 @@ namespace GA
         
         static void Main(string[] args)
         {
-            var ob = new GA.Common.GA(200, 0.1, 0.8, 40);
-            ob.executaGA();
-            ob.printaDados();
+            //var ob = new GA.Common.GA(200, 0.1, 0.8, 40);
+            //ob.executaGA();
+            //ob.printaDados();
             
 
-            Console.ReadLine();
+            //Console.ReadLine();
         }
     }
 }

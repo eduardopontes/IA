@@ -70,8 +70,8 @@ namespace GA.Common
             }
         }
 
-        static List<double> BestfitList = new List<double>();
-        static List<double> AveragefitList = new List<double>();
+        List<double> BestfitList = new List<double>();
+        List<double> AveragefitList = new List<double>();
 
         public double[] bestArrayFit()
         {
