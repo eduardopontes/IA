@@ -23,6 +23,10 @@ namespace Graficos
         private void botaoExec(object sender, EventArgs e)
         {
             label5.Visible = true;
+
+            chart1.ChartAreas[0].AxisX.Title = "Gerações";
+            chart1.ChartAreas[0].AxisY.Title = "Fitness";
+
             int popMax = Convert.ToInt32(textBox1.Text);
             double taxaCross = Convert.ToDouble(textBox2.Text);
             double taxaMut = Convert.ToDouble(textBox3.Text);
