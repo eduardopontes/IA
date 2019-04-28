@@ -19,17 +19,10 @@ namespace GA
         
         static void Main(string[] args)
         {
-            var ob = new GA.Common.GA(200, 0.1, 0.8, 5000);
+            var ob = new GA.Common.GA(200, 0.1, 0.8, 40);
             ob.executaGA();
             ob.printaDados();
-
-            EventArgs e = null;
-            var send = "";
-
-            GraficosEP gh = new GraficosEP();
             
-            gh.GraficosEP_Load(send, e);
-           
 
             Console.ReadLine();
         }

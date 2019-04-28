@@ -60,7 +60,7 @@ namespace GA.Common
 
             Console.WriteLine("Numero de casos ótimos: " + bestCount);
         }
-
+        
         public void executaGA()
         {
             criaPopInicial();
@@ -70,16 +70,43 @@ namespace GA.Common
             }
         }
 
+        static List<double> BestfitList = new List<double>();
+        static List<double> AveragefitList = new List<double>();
+
+        public double[] bestArrayFit()
+        {
+            double[] arrayFitness = BestfitList.ToArray();
+            return arrayFitness;
+        }
+
+        public double[] averageArrayFit()
+        {
+            double[] arrayFitness = AveragefitList.ToArray();
+            return arrayFitness;
+        }
+
         //CHECK
         public void criaPopInicial()
         {
             double somaFit = 0;//avaliar qual vai ser a logica pra isso, talvez não fique aqui
 
+            double bestFit = 0;
+            double averageFit = 0;
+
             for (int i = 0; i < Populacao.Length; i++)
             {
                 Populacao[i] = new Cromossomo();
                 somaFit += Populacao[i].Fitness;
+
+                if (Populacao[i].Fitness >= bestFit)
+                {
+                    bestFit = Populacao[i].Fitness;
+                }
             }
+            averageFit = somaFit / Populacao.Length;
+
+            AveragefitList.Add(averageFit);
+            BestfitList.Add(bestFit);
             geracao++;
         }
 
@@ -87,7 +114,7 @@ namespace GA.Common
         {
             Populacao = crossover();
             avaliaMutacoes();
-            geracao++;
+            geracao++; 
         }
 
         public Cromossomo[] crossover()
@@ -98,10 +125,22 @@ namespace GA.Common
             Cromossomo parceiroB;
 
             double somaFit = 0;
+            double bestFit = 0;
+            double averageFit = 0;
+
             foreach (var cromo in Populacao)
             {
                 somaFit += cromo.Fitness;
+
+                if (cromo.Fitness >= bestFit)
+                {
+                    bestFit = cromo.Fitness;
+                }
             }
+            averageFit = somaFit / Populacao.Length;
+
+            AveragefitList.Add(averageFit);
+            BestfitList.Add(bestFit);
 
             for (int i = 0; i < novaPop.Length; i += 2)
             {
