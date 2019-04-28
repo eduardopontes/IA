@@ -33,7 +33,6 @@ namespace GA.Common
                 this.taxaMut = taxaMut;
                 this.taxaCross = taxaCross;
                 this.maxGer = maxGeracoes;
-            
         }
 
         public static Random rand = new Random();

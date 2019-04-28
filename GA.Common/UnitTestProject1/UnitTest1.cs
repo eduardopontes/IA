@@ -85,7 +85,7 @@ namespace Rastrigin.Teste
 
             double actual = 537;
             double expected = 537; //só pra rodar
-            
+
             var obj = new GA.Common.GA(popMax, taxaMut, taxaCross, maxGeracoes);
 
             obj.criaPopInicial();

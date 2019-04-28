@@ -21,6 +21,10 @@ namespace GA
             var ob = new GA.Common.GA(200, 0.1, 0.8, 5000);
             ob.executaGA();
             ob.printaDados();
+
+            
+            
+
             Console.ReadLine();
         }
     }
