@@ -166,12 +166,12 @@ namespace GA.Common
 
         public Cromossomo roleta(double somaTotalFit)
         {
-            double tiro = rand.NextDouble();
+            double giroRoleta = rand.NextDouble();
 
             foreach (var cromo in Populacao)
             {
-                tiro -= cromo.Fitness / somaTotalFit;
-                if (tiro < 0) return cromo;
+                giroRoleta -= cromo.Fitness / somaTotalFit;
+                if (giroRoleta < 0) return cromo;
             }
             return Populacao[Populacao.Length - 1];
         }
